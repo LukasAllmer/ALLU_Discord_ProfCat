@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { REST, SlashCommandBuilder, Routes } = require('discord.js');
+const { REST, Routes } = require('discord.js');
 const { clientId, token } = require('./config.json');
 
 // This fetches all .js files from the commands folder and adds it to the commands!
