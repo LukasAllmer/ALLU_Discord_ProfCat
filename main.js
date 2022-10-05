@@ -2,10 +2,11 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const {token} = require('./config.json');
+// Automatically deploy new commands globally
 const deploy = require("./deploy-commands.js");
 deploy.deployCommands();
 
-// Intents are required for access to events
+// Control which events the client gets
 const client = new Client({
     intents: [
         GatewayIntentBits.DirectMessageReactions,
@@ -27,6 +28,7 @@ const client = new Client({
         GatewayIntentBits.MessageContent]
 });
 
+// Create Collection according to files in ./commands
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
