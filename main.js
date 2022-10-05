@@ -39,11 +39,21 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-client.once('ready', () => {
-    console.log("ProfCat is ready!");
-})
+// Respond to events from ./events
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
-// Respond to commands from deploy-commands.js
+for (const file of eventFiles) {
+	const filePath = path.join(eventsPath, file);
+	const event = require(filePath);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
+
+// Respond to commands from ./commands
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
@@ -58,18 +68,6 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
