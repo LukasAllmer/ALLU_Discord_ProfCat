@@ -25,11 +25,11 @@ function deployCommands() {
 
 module.exports = {deployCommands};
 
-// Enable to delete all global commands
+// Enable and run script to delete all global commands
 /* rest.put(Routes.applicationCommands(clientId), { body: commands })
     .then((data) => console.log(`Successfully registered ${data.length} application commands.`))
     .catch(console.error);    */
-// Enable to delete all commands from a certain guild
+// Enable and run script to delete all commands from a certain guild specified by the guildId
 /* rest.put(Routes.applicationGuildCommands(clientId, 'guildId'), { body: [] })
 .then(() => console.log('Successfully deleted all guild commands.'))
 .catch(console.error); */
