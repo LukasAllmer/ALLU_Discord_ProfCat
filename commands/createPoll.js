@@ -4,9 +4,10 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('createPoll')
 		.setDescription('Creates a poll.'),
-	async execute(interaction) {
-		await interaction.channel.send('My message.')/* .then(sentMessage => {
-            sentMessage.react(':+:');
-        }) */
-	},
+    async execute(interaction) {
+        await interaction.reply({
+            content: 'Pong!', 
+            ephemeral: true
+        });
+    },
 };
