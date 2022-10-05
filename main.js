@@ -28,6 +28,7 @@ const client = new Client({
         GatewayIntentBits.MessageContent]
 });
 
+// Test
 // Create Collection according to files in ./commands
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
