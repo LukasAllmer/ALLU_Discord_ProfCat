@@ -2,6 +2,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const {token} = require('./config.json');
+const deploy = require("./deploy-commands.js");
+deploy.deployCommands();
 
 // Intents are required for access to events
 const client = new Client({
