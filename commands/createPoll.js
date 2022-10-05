@@ -5,8 +5,8 @@ module.exports = {
 		.setName('createPoll')
 		.setDescription('Creates a poll.'),
 	async execute(interaction) {
-		await interaction.channel.send('My message.').then(sentMessage => {
-            sentMessage.react('👍');
-        })
+		await interaction.channel.send('My message.')/* .then(sentMessage => {
+            sentMessage.react(':+:');
+        }) */
 	},
 };
